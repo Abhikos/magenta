@@ -16,6 +16,7 @@
 #include <threads.h>
 #include <unistd.h>
 
+#include "acpi.h"
 #include "devmgr.h"
 
 #define VC_COUNT 3
@@ -115,6 +116,11 @@ int main(int argc, char** argv) {
 
     devmgr_init(false);
     devmgr_vfs_init();
+
+    mx_status_t status = devmgr_launch_acpisvc();
+    if (status != NO_ERROR) {
+        return 1;
+    }
 
     printf("devmgr: load drivers\n");
     devmgr_init_builtin_drivers();

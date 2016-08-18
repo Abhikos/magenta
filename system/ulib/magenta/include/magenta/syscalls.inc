@@ -57,6 +57,7 @@ MAGENTA_DDKCALL_DEF(2, 2, 5, int, debug_send_command, const void* buffer, uint32
 
 // Temporary system calls before pending calls to get system info are created.
 MAGENTA_SYSCALL_DEF(0, 0, 6, unsigned int, num_cpus, void)
+MAGENTA_DDKCALL_DEF(0, 0, 7, uint32_t, uefi_acpi_rsdp, void)
 
 // Logging
 MAGENTA_SYSCALL_DEF(1, 1, 30, mx_handle_t, log_create, uint32_t flags)
@@ -163,6 +164,7 @@ MAGENTA_DDKCALL_DEF(4, 4, 190, mx_status_t, pci_query_irq_mode_caps, mx_handle_t
                     mx_pci_irq_mode_t mode, uint32_t* out_max_irqs)
 MAGENTA_DDKCALL_DEF(4, 4, 191, mx_status_t, pci_set_irq_mode, mx_handle_t handle, mx_pci_irq_mode_t mode,
                     uint32_t requested_irq_count)
+MAGENTA_DDKCALL_DEF(2, 2, 192, mx_status_t, pci_init, void* init_buf, uint32_t len)
 
 // I/O mapping objects
 MAGENTA_DDKCALL_DEF(3, 3, 200, mx_status_t, io_mapping_get_info, mx_handle_t handle, void** out_vaddr,
